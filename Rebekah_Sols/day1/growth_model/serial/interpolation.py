@@ -43,7 +43,7 @@ def sparse_grid(n_agents, iDepth, jj):
     for iI in range(iNumP1):
         aValTemp = 0
         for jj in range(5):
-            aValTemp += (1./5) * solver.initial(aPoints[iI], n_agents, valold[jj], jj)[0]
+            aValTemp += (1./5) * solver.initial(aPoints[iI], n_agents, jj)[0]
         aVals[iI]=aValTemp
     grid.loadNeededPoints(aVals)
 

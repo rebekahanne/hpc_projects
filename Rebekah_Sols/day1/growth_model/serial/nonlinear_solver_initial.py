@@ -14,7 +14,7 @@ import pyipopt
 
 #======================================================================
 
-def initial(k_init, n_agents):
+def initial(k_init, n_agents, jj):
     # IPOPT PARAMETERS below
     nvars=3*n_agents
     N=nvars         # number of vars
@@ -79,16 +79,16 @@ def initial(k_init, n_agents):
 
     # Create ev_f, eval_f, eval_grad_f, eval_g, eval_jac_g for given k_init and n_agent
     def eval_f(X):
-        return EV_F(X, k_init, n_agents)
+        return EV_F(X, k_init, n_agents, jj)
 
     def eval_grad_f(X):
-        return EV_GRAD_F(X,k_init, n_agents)
+        return EV_GRAD_F(X,k_init, n_agents, jj)
 
     def eval_g(X):
-        return EV_G(X, k_init, n_agents)
+        return EV_G(X, k_init, n_agents, jj)
 
     def eval_jac_g(X, flag):
-        return EV_JAC_G(X, flag, k_init, n_agents)
+        return EV_JAC_G(X, flag, k_init, n_agents, jj)
 
     # First create a handle for the Ipopt problem
     nlp=pyipopt.create(nvars, X_L, X_U, M, G_L, G_U, NELE_JAC, NELE_HESS, eval_f, eval_grad_f, eval_g, eval_jac_g)
@@ -123,4 +123,3 @@ def initial(k_init, n_agents):
     #f.close()
 
     return obj, c, l, inv
-

@@ -70,8 +70,6 @@ def sparse_grid(n_agents, iDepth, jj):
         file.close()
         grid.loadNeededPoints(aVals)
 
-    grid.loadNeededPoints(aVals)
-
     f=open("grid.txt", 'w')
     np.savetxt(f, aPoints, fmt='% 2.16f')
     f.close()

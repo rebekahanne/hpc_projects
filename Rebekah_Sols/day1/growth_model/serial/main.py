@@ -37,7 +37,7 @@ storeVal = []
 if (numstart==0):
     for jj in range(5):
         valnew=TasmanianSG.TasmanianSparseGrid()
-        valnew=interpol.sparse_grid(n_agents, iDepth)
+        valnew=interpol.sparse_grid(n_agents, iDepth, jj)
         #print(valnew)
         valnew.write("valnew_1." + str(numstart) + ".txt") #write file to disk for restart
         storeVal.append(valnew)

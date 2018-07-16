@@ -21,20 +21,20 @@ d = 2
 def continuous(x, c, w, d):
     innersum = 0
     for ii in range(d):
-        innersum += c[d] * np.abs(x[d] - w[d])
+        innersum += c[ii] * np.abs(x[ii] - w[ii])
     return np.exp(-1 * innersum)
 
 def oscillatory(x, c, w, d):
     innersum = 0
     for ii in range(d):
-        innersum +=  c[d] * x[d]
+        innersum +=  c[ii] * x[ii]
     return np.cos(2 * np.pi * w[0] + innersum)
 
 def corner_peak(x, c, d):
     innersum = 0
     for ii in range(d):
-        innersum +=  c[d] * x[d]
-    return (1 + innersum) ** -(d+1)
+        innersum +=  c[ii] * x[ii]
+    return (1 + innersum) ** -(d)
 
 # Sparse Grids
 def sparse_grid_test(iDim, iOut, which_bases, func, c, w):
@@ -56,7 +56,7 @@ def sparse_grid_test(iDim, iOut, which_bases, func, c, w):
         # Result
         aTres = np.empty([n,])
         for iI in range(n):
-            aTres[iI] = func(aPnts[iI], c, w, iDim-1)
+            aTres[iI] = func(aPnts[iI], c, w, iDim)
 
         print("\n-------------------------------------------------------------------------------------------------")
         print("Test Function: interpolate function")

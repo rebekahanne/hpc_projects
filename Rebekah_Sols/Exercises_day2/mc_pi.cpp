@@ -1,35 +1,35 @@
+#include <cstdlib>
 #include <iostream>
-#include <cmath>
-#include <random>
+#include <math.h>
+
 using namespace std;
 
-void approx_pi( int N ){
+double compute_pi(int N)
+{
+    int count = 0;
+    for (int i=0; i<N; ++i)
+    {
+        double x = (double) rand() / RAND_MAX;
+        double y = (double)rand() / RAND_MAX;
+        if (x * x + y * y < 1)
+        {
+            count += 1;
+                                                                    
+        }
+                                                
+    }
+    
+    double pi = 4.0 * count / N;
+    cout << "Number of MC draws: " << N << endl;
+    cout << "Pi is approximately: " << pi << endl;                                             
+    return pi;
 
-  double count = 0;
-  double x;
-  double y;
-  double dist;
-
-  for (int i = 0; i < N; i++){
-
-      x = ((double) rand() / (RAND_MAX));
-      y = ((double) rand() / (RAND_MAX));
-
-      dist = pow(x,2) + pow(y,2);
-      if (dist <= 1){
-          count += 1;
-      }
-  }
-
-  double pi = 4.0 * count / N;
-  cout << "Pi = " << pi << " with N = " << N << endl;
 }
 
-int main(){
-
-  approx_pi(100);
-  approx_pi(1000);
-  approx_pi(10000);
-  
-  return 0;
+int main ()
+{
+    compute_pi(100);
+    compute_pi(1000);
+    compute_pi(10000);
+    compute_pi(100000);   
 }

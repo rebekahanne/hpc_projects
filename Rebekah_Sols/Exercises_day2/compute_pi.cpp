@@ -8,8 +8,7 @@ int main() {
     int N;
     double step;
 
-    cout << "Please enter N: ";
-    cin >> N;
+    N = 100000;
 
     step = 1.0 / (double) N;
 

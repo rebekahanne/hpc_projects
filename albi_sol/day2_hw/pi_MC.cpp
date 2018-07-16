@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include <iostream>
+#include <stdio.h>
 #include <time.h>
 #include <math.h>
 
@@ -24,14 +24,16 @@ double compute_pi(int N)
 
 int main ()
 {
+    clock_t stime = clock();
     for (int n=0; n<4; n++)
     {
         int N = 100 * pow(10, n);
         double pi_estimate = compute_pi(N);
-        cout << "------------------------------" << endl;
-        cout << "Number of MC iterations: " << N << endl;
-        cout << "Pi is approximately: " << pi_estimate << endl;
+        printf("------------------------------\n");
+        printf("Number of MC iterations: %d\n", N);
+        printf("Pi is approximately: %1.6f\n", pi_estimate);
     }
     
+    printf("\nExecution time: %.4fs\n", (double)(clock() - stime)/CLOCKS_PER_SEC);
     return 0;
 }

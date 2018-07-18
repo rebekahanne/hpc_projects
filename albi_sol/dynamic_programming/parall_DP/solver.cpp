@@ -53,7 +53,6 @@ MatrixXd ValIt(MatrixXd ValOld)
      */
     
     
-    #pragma omp parallel for private(c, temp)
     for (int itheta=0; itheta<ntheta; itheta++) 
     {
             
@@ -64,6 +63,7 @@ MatrixXd ValIt(MatrixXd ValOld)
         capital state.  
         */
         
+        #pragma omp parallel for private(c, temp)
         for (int ik=0; ik<nk; ik++) 
         {
             

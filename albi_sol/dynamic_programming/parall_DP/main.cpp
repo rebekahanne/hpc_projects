@@ -24,9 +24,7 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     
     
-    // timestamp variable
-    //clock_t tStart;
-    double tStart = omp_get_wtick();
+    double tStart=0.;
     
     // We create two matrices, ValOld and ValNew, to represent the old
     // and new value functions in value function iteration.
@@ -96,7 +94,7 @@ int main(int argc, const char * argv[]) {
     /* We will now do Numits - numstart Value function iterations. 
      * We begin at iteration numstart and end at iteration Numits-1.
      */
-    tStart = clock();
+    tStart = omp_get_wtime();
     for (int i=numstart; i<Numits; i++) {
         /* The ValNew resulting from the previous Value function iteration now becomes the ValOld of the current iteration. 
          */
@@ -149,7 +147,7 @@ int main(int argc, const char * argv[]) {
     cout<<ValNew << endl;
     
     // End the timing of the iterations and print the time it took to do the iterations
-    printf("Iterations took: %.2fs\n", (double)(omp_get_wtick() - tStart)/CLOCKS_PER_SEC);
+    printf("Iterations took: %.2fs\n", (double)(omp_get_wtime() - tStart)/CLOCKS_PER_SEC);
     
     // Perform one last iteration so we can compute how much time it takes to write the results
     ValOld=ValNew;
@@ -158,7 +156,7 @@ int main(int argc, const char * argv[]) {
     Result=ValIt(ValOld);
     
     // Start Timing the Final Part (Writing Part)
-    tStart = clock();
+    tStart = omp_get_wtime();
     
     // Extract Value Function and Policy Function and compute maximum difference between the old and new value functions
     
@@ -182,7 +180,7 @@ int main(int argc, const char * argv[]) {
     }
     
     // End timing
-     printf("Final part (Writing Part) took: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+     printf("Final part (Writing Part) took: %.2fs\n", (double)(omp_get_wtime() - tStart)/CLOCKS_PER_SEC);
      cout << "Value function iteration completed" << endl;
      
     return 0;

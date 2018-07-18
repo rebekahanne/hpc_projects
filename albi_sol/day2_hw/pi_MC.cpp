@@ -4,36 +4,26 @@
 #include <math.h>
 
 using namespace std;
-
-double compute_pi(int N)
-{
-    srand( time(NULL) ); //Randomize seed initialization
-    int count = 0;
-    for (int i=0; i<N; ++i)
-    {
-        double x = (double)rand() / RAND_MAX;
-        double y = (double)rand() / RAND_MAX;
-        if (x * x + y * y < 1)
-        {
-            count += 1;
-        }
-    }
-    
-    return (double)4 * count / N;
-}
+static long max_iter = 1e8;
 
 int main ()
 {
     clock_t stime = clock();
-    for (int n=0; n<4; n++)
+    srand( time(NULL) );
+   
+    int count = 0;
+    for (int i=0; i<max_iter; ++i) 
     {
-        int N = 100 * pow(10, n);
-        double pi_estimate = compute_pi(N);
-        printf("------------------------------\n");
-        printf("Number of MC iterations: %d\n", N);
-        printf("Pi is approximately: %1.6f\n", pi_estimate);
+        double x = (double)rand() / RAND_MAX;
+        double y = (double)rand() / RAND_MAX;
+        if ( x*x + y*y < 1 ) { ++count; }
     }
     
+    double pi = (double)4.0 * count / max_iter;
+
+    printf("Number of MC iterations: %d\n", max_iter);
+    printf("Pi is approximately: %1.6f\n", pi);
     printf("\nExecution time: %.4fs\n", (double)(clock() - stime)/CLOCKS_PER_SEC);
+    
     return 0;
 }

@@ -60,10 +60,10 @@ int main(int argc, char *argv[])
     // set rcv array
     //int rcv[rcvcount];
     
-    MPI_Barrier(MPI_COMM_WORLD);
     /* scatter the value of 'send' of rank 0 to recv of all ranks */
     //MPI_Scatter(&snd, rcvcount, MPI_INT, &rcv, rcvcount, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Scatterv(&snd, recvcounts, displs, MPI_INT, rcv, 20, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     printf("rank %i has values: ", rank);
     for (i=0; i<recvcounts[rank]; i++) {

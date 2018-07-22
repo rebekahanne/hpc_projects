@@ -25,4 +25,4 @@ plt.xlabel('threads')
 plt.ylabel('seconds')
 plt.show()
 
-plt.savefig('pi_MC_OMP_speedup.png')
+plt.savefig('DSDP_OMP_speedup.png')

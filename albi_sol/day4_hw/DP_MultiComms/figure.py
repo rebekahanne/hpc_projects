@@ -17,7 +17,7 @@ threads = np.array([
     8,
     16
     ])
-seconds1 = seconds1 / seconds1[0]
+#seconds1 = seconds1 / seconds1[0]
 
 # 5 node
 seconds5 = np.array([
@@ -27,7 +27,7 @@ seconds5 = np.array([
     38.511804,
     60.539282
     ])
-seconds5 = seconds5 / seconds5[0]
+#seconds5 = seconds5 / seconds5[0]
 
 # 10 node
 seconds10 = np.array([
@@ -37,7 +37,7 @@ seconds10 = np.array([
     22.801619,
     32.610038
     ])
-seconds10 = seconds10 / seconds10[0]
+#seconds10 = seconds10 / seconds10[0]
 
 # 20 node
 seconds20 = np.array([
@@ -47,19 +47,40 @@ seconds20 = np.array([
     12.877873,
     17.860869
     ])
-seconds20 = seconds20 / seconds20[0]
-print(seconds)
+#seconds20 = seconds20 / seconds20[0]
 plt.plot(threads, seconds1, 'o')
-plt.plot(threads, seconds1)
+plt.plot(threads, seconds1, label = '1 node')
 plt.plot(threads, seconds5, 'o')
-plt.plot(threads, seconds5)
+plt.plot(threads, seconds5, label = '5 nodes')
 plt.plot(threads, seconds10, 'o')
-plt.plot(threads, seconds10)
+plt.plot(threads, seconds10, label = '10 nodes')
 plt.plot(threads, seconds20, 'o')
-plt.plot(threads, seconds20)
-plt.title('DSDP hybrid speedup')
+plt.plot(threads, seconds20, label = '20 nodes')
+plt.legend(loc = 'upper right')
+plt.title('DSDP hybrid absolute speedup')
 plt.xlabel('threads')
 plt.ylabel('seconds')
 plt.show()
 
-plt.savefig('DSDP_hybrid_20node_speedup.png')
+plt.savefig('DSDP_hybrid_absolute_speedup.png')
+
+seconds1 = seconds1 / seconds1[0]
+seconds5 = seconds5 / seconds5[0]
+seconds10 = seconds10 / seconds10[0]
+seconds20 = seconds20 / seconds20[0]
+
+plt.plot(threads, seconds1, 'o')
+plt.plot(threads, seconds1, label = '1 node')
+plt.plot(threads, seconds5, 'o')
+plt.plot(threads, seconds5, label = '5 nodes')
+plt.plot(threads, seconds10, 'o')
+plt.plot(threads, seconds10, label = '10 nodes')
+plt.plot(threads, seconds20, 'o')
+plt.plot(threads, seconds20, label = '20 nodes')
+plt.legend(loc = 'upper right')
+plt.title('DSDP hybrid relative speedup')
+plt.xlabel('threads')
+plt.ylabel('seconds')
+plt.show()
+
+plt.savefig('DSDP_hybrid_relative_speedup.png')

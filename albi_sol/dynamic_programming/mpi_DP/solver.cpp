@@ -86,5 +86,3 @@ MatrixXd ValIt(MatrixXd ValOld) {
     return result;
 }
 
-
-

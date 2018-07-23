@@ -20,7 +20,7 @@ seconds = seconds / seconds[0]
 print(seconds)
 plt.plot(threads, seconds, 'o')
 plt.plot(threads, seconds)
-plt.title('DSDP MPI 1 node speedup')
+plt.title('DSDP MPI 1 node relative speedup')
 plt.xlabel('threads')
 plt.ylabel('seconds')
 plt.show()
